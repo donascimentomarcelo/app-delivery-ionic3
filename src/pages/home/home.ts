@@ -39,7 +39,7 @@ export class HomePage {
     errors => {});
   }
 
-  public login(){
+  login(){
     this.auth.authenticate(this.creds)
       .subscribe(Response => {
         this.auth.successfulLogin(Response.headers.get('Authorization'));
@@ -47,4 +47,9 @@ export class HomePage {
       },
       errors => {});
   }
+
+  signup(){
+    this.navCtrl.push('SignupPage');
+  }
+
 }
