@@ -1,3 +1,5 @@
+import { EstadoService } from './../../services/domain/estado.service';
+import { CidadeServie } from './../../services/domain/cidade.service';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SignupPage } from './signup';
@@ -9,5 +11,9 @@ import { SignupPage } from './signup';
   imports: [
     IonicPageModule.forChild(SignupPage),
   ],
+  providers: [
+    CidadeServie,
+    EstadoService,
+  ]
 })
 export class SignupPageModule {}
