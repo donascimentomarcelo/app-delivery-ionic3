@@ -43,9 +43,9 @@ export class ProdutosPage {
     }
   }
 
-  showDetail()
+  showDetail(codigo : string)
   {
-    this.navCtrl.push('ProdutoDetailPage');
+    this.navCtrl.push('ProdutoDetailPage', {produto_id: codigo});
   }
 
 
