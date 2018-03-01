@@ -81,11 +81,11 @@ export class CartService {
         if(position != -1)
         {
             cart.items[position].quantidade--;
-           /*
+           
             if(cart.items[position].quantidade < 1)
             {
                 cart = this.removeProduto(produto);
-            }*/
+            }
         }
 
         this.storage.setCart(cart);
