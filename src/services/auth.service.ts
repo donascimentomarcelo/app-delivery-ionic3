@@ -1,3 +1,4 @@
+import { CartService } from './domain/cart.service';
 import { LocalUser } from './../models/local_user';
 import { StorageServices } from './storage.service';
 import { API_CONFIG } from './../config/api.config';
@@ -11,7 +12,10 @@ export class AuthService{
 
     jwtHelper: JwtHelper = new JwtHelper();
 
-    constructor(public http: HttpClient, public storage: StorageServices){
+    constructor(
+            public http: HttpClient, 
+            public storage: StorageServices,
+            public cartService: CartService){
 
     }
 
@@ -43,6 +47,7 @@ export class AuthService{
         };
         
         this.storage.setLocalUser(user);
+        this.cartService.createOrClearCart();
     }
 
     logout(){
