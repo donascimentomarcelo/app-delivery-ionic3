@@ -31,7 +31,7 @@ export class ProdutosPage {
         this.loadImageUrls();
         loader.dismiss();
       }, error => {
-
+        loader.dismiss();
       });
   }
 
@@ -61,6 +61,13 @@ export class ProdutosPage {
 
     loader.present();
     return loader;
+  }
+
+  doRefresh(refresher) {
+    setTimeout(() => {
+      refresher.complete();
+      this.ionViewDidLoad();
+    }, 2000);
   }
 
 
