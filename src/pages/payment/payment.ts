@@ -28,10 +28,12 @@ export class PaymentPage {
         numeroDeParcelas: [1, Validators.required],
         "@type": ["pagamentoComCartao", Validators.required]
       })
+
   }
 
   nextPage()
   {
+    
     this.pedido.pagamento = this.formGroup.value;
     this.navCtrl.setRoot('OrderConfirmationPage', {pedido: this.pedido});
   }
