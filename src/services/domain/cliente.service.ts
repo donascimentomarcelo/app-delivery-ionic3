@@ -1,3 +1,4 @@
+import { ImageUtilService } from './../image-util.service';
 import { API_CONFIG } from './../../config/api.config';
 import { ClienteDTO } from './../../models/cliente.dto';
 import { Observable } from 'rxjs/Rx';
@@ -8,7 +9,10 @@ import { StorageServices } from '../storage.service';
 @Injectable()
 export class ClienteService {
 
-    constructor(public http: HttpClient, public storage: StorageServices){
+    constructor(
+        public http: HttpClient, 
+        public storage: StorageServices,
+        public imageUtilService: ImageUtilService){
 
     }
 
@@ -36,5 +40,23 @@ export class ClienteService {
             }
         );
     }
+
+    uploadPicture(picture)
+    {
+        let pictureBlob = this.imageUtilService.dataUriToBlob(picture);
+        let formData: FormData = new FormData();
+        formData.set('file', picture, 'file.png');
+
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/clientes/picture`,
+            formData,
+            {
+                observe: 'response',
+                responseType: 'text'
+            }
+        );
+
+    }
+    
 
 }

@@ -74,4 +74,21 @@ export class ProfilePage {
     }, (error) => {
     });
   }
+
+  sendPicture()
+  {
+    this.clienteService.uploadPicture(this.picture)
+      .subscribe(response => {
+        this.picture = null;
+        this.ionViewDidLoad();
+      },
+    error => {
+
+    })
+  }
+
+  cancel()
+  {
+    this.picture = null;
+  }
 }
